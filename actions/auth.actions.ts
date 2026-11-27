@@ -2,8 +2,7 @@
 import { z } from "zod";
 import { db } from "@/lib/db";
 import bcrypt from "bcryptjs";
-
-import { signIn } from "@/lib/auth";
+import { signIn,signOut } from "@/lib/auth";
 import { AuthError } from "next-auth";
 
 const signupSchema = z.object({
@@ -69,4 +68,8 @@ export async function loginUser(prevState: any, formData: FormData) {
 
     }
     return { error: "" };
+}
+
+export async function logoutUser(){
+    await signOut({redirectTo:"/login"});
 }
