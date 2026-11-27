@@ -28,7 +28,11 @@ export default function LoginPage() {
                     required
                     className="w-full border p-2 rounded" />
                 {state.error && <p className="text-red-500 text-sm">{state.error}</p>}
-                <button type="submit" disabled={isPending} className="w-full bg-black text-white py-2 rounded disabled:opacity-0">{isPending ? "Logging in..." : "Login"}</button>
+                <button type="submit" disabled={isPending} className="w-full
+                 bg-black text-white py-2 
+                 rounded disabled:opacity-50">
+                    {isPending ? "Logging in..." : "Login"}
+                </button>
 
                 <p className="text-sm text-center">
                     don't an account?{""}

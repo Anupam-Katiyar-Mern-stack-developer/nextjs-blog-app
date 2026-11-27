@@ -2,7 +2,7 @@
 import { z } from "zod";
 import { db } from "@/lib/db";
 import bcrypt from "bcryptjs";
-import { signIn,signOut } from "@/lib/auth";
+import { signIn, signOut } from "@/lib/auth";
 import { AuthError } from "next-auth";
 
 const signupSchema = z.object({
@@ -37,7 +37,7 @@ export async function signupUser(prevState: any, formData: FormData) {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-   const res= await db.user.create({
+    const res = await db.user.create({
         data: {
             name, email, password: hashedPassword
         },
@@ -70,6 +70,6 @@ export async function loginUser(prevState: any, formData: FormData) {
     return { error: "" };
 }
 
-export async function logoutUser(){
-    await signOut({redirectTo:"/login"});
+export async function logoutUser() {
+    await signOut({ redirectTo: "/login" });
 }
